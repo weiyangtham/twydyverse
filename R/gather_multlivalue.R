@@ -21,8 +21,8 @@
 #' scores2000 = 96:100,
 #' scores2010 = 100:96)
 #'
-#' gather_multivalue(scores, -id)
-#' gather_multivalue(scores, age2000:scores2010)
+#' gather_multivalue(scores, -id, "year")
+#' gather_multivalue(scores, age2000:scores2010, "year")
 #'
 #'
 #' scores2 <- data.frame(
@@ -32,7 +32,7 @@
 #' scores_2000 = 96:100,
 #' scores_2010 = 100:96)
 #'
-#' gather_multivalue(scores2, -id, regex = "([a-z]+)_(\\d+)")
+#' gather_multivalue(scores2, -id, "year", regex = "([a-z]+)_(\\d+)")
 
 
 gather_multivalue = function(data, vars, key = "key", regex = "^([a-zA-Z]+)(\\d+)$"){
