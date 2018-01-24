@@ -4,10 +4,10 @@
 #' purpose as Stata's `reshape` long.
 #'
 #' @param data a data frame
+#' @param key key
 #' @param values A selection of columns. If empty, all variables are selected.
 #' You can supply bare variable names, select all variables between x and z with x:z,
 #' exclude y with -y. For more options, see the dplyr::select() documentation.
-#' @param key key
 #' @param regex a regular expression used to extract the desired values
 #'
 #' @export
@@ -21,8 +21,8 @@
 #' scores2000 = 96:100,
 #' scores2010 = 100:96)
 #'
-#' gather_multivalue(scores, -id, "year")
-#' gather_multivalue(scores, age2000:scores2010, "year")
+#' gather_multivalue(scores, "year", -id)
+#' gather_multivalue(scores, "year", age2000:scores2010)
 #'
 #'
 #' scores2 <- data.frame(
@@ -32,7 +32,7 @@
 #' scores_2000 = 96:100,
 #' scores_2010 = 100:96)
 #'
-#' gather_multivalue(scores2, -id, "year", regex = "([a-z]+)_(\\d+)")
+#' gather_multivalue(scores2, "year", -id, regex = "([a-z]+)_(\\d+)")
 
 
 gather_multivalue = function(data, key = "key", values, regex = "^([a-zA-Z]+)(\\d+)$"){
