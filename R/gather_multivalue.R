@@ -4,7 +4,7 @@
 #' purpose as Stata's `reshape` long.
 #'
 #' @param data a data frame
-#' @param vars A selection of columns. If empty, all variables are selected.
+#' @param values A selection of columns. If empty, all variables are selected.
 #' You can supply bare variable names, select all variables between x and z with x:z,
 #' exclude y with -y. For more options, see the dplyr::select() documentation.
 #' @param key key
@@ -35,22 +35,22 @@
 #' gather_multivalue(scores2, -id, "year", regex = "([a-z]+)_(\\d+)")
 
 
-gather_multivalue = function(data, vars, key = "key", regex = "^([a-zA-Z]+)(\\d+)$"){
+gather_multivalue = function(data, key = "key", values, regex = "^([a-zA-Z]+)(\\d+)$"){
 
   if (key == "key2"){
     stop("use a different name for key")
   }
 
-  vars <- dplyr::enquo(vars)
+  values <- dplyr::enquo(values)
 
-  # print(vars)
+  # print(values)
   #
   # print(quo(data %>%
-  #             gather(key, value, !!vars) %>%
+  #             gather(key, value, !!values) %>%
   #             tidyr::extract(key, c("colname", key2), regex)))
 
   data %>%
-    tidyr::gather("key2", "value", !!vars) %>%
+    tidyr::gather("key2", "value", !!values) %>%
     tidyr::extract("key2", c("colname", key), regex, remove = TRUE) %>%
     tidyr::spread("colname", "value")
 
