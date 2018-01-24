@@ -35,8 +35,8 @@ spread_multivalue = function(data, key, values, sep = ""){
   values <- dplyr::enquo(values)
 
   data %>%
-    tidyr::gather("key2", "value", !!values) # %>%
-    tidyr::unite("keys", "key2", key, sep = sep) %>%
+    tidyr::gather("key2", "value", !!values) %>%
+    tidyr::unite("keys", dplyr::one_of(c("key2", key)), sep = sep) %>%
     tidyr::spread("keys", "value")
 
   # data %>%
