@@ -2,4 +2,5 @@
 
 export("%>%")
 export(gather_multivalue)
+export(spread_multivalue)
 importFrom(magrittr,"%>%")
