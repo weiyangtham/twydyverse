@@ -4,7 +4,7 @@
 #' purpose as Stata's `reshape` wide.
 #'
 #' @param data a data frame
-#' @param key key
+#' @param key key, a string
 #' @param values A selection of columns. If empty, all variables are selected.
 #' You can supply bare variable names, select all variables between x and z with x:z,
 #' exclude y with -y. For more options, see the dplyr::select() documentation.
@@ -21,8 +21,8 @@
 #' scores2000 = 96:100,
 #' scores2010 = 100:96)
 #'
-#' # gather_multivalue(scores, -id, "year")
-#' scores_long <- gather_multivalue(scores, age2000:scores2010, "year")
+#' # gather_multivalue(scores, "year", -id)
+#' scores_long <- gather_multivalue(scores, "year", age2000:scores2010)
 #'
 #' spread_multivalue(scores_long, "year", c(age, scores))
 

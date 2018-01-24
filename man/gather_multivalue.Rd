@@ -4,16 +4,17 @@
 \alias{gather_multivalue}
 \title{tidyr's gather for multiple values}
 \usage{
-gather_multivalue(data, vars, key = "key", regex = "^([a-zA-Z]+)(\\\\d+)$")
+gather_multivalue(data, key = "key", values,
+  regex = "^([a-zA-Z]+)(\\\\d+)$")
 }
 \arguments{
 \item{data}{a data frame}
 
-\item{vars}{A selection of columns. If empty, all variables are selected.
+\item{key}{key, a string}
+
+\item{values}{A selection of columns. If empty, all variables are selected.
 You can supply bare variable names, select all variables between x and z with x:z,
 exclude y with -y. For more options, see the dplyr::select() documentation.}
-
-\item{key}{key}
 
 \item{regex}{a regular expression used to extract the desired values}
 }
@@ -30,8 +31,8 @@ age2010 = 21:25,
 scores2000 = 96:100,
 scores2010 = 100:96)
 
-gather_multivalue(scores, -id, "year")
-gather_multivalue(scores, age2000:scores2010, "year")
+gather_multivalue(scores, "year", -id)
+gather_multivalue(scores, "year", age2000:scores2010)
 
 
 scores2 <- data.frame(
@@ -41,5 +42,5 @@ age_2010 = 21:25,
 scores_2000 = 96:100,
 scores_2010 = 100:96)
 
-gather_multivalue(scores2, -id, "year", regex = "([a-z]+)_(\\\\d+)")
+gather_multivalue(scores2, "year", -id, regex = "([a-z]+)_(\\\\d+)")
 }

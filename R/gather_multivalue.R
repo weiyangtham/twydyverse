@@ -4,7 +4,7 @@
 #' purpose as Stata's `reshape` long.
 #'
 #' @param data a data frame
-#' @param key key
+#' @param key key, a string
 #' @param values A selection of columns. If empty, all variables are selected.
 #' You can supply bare variable names, select all variables between x and z with x:z,
 #' exclude y with -y. For more options, see the dplyr::select() documentation.
