@@ -15,18 +15,19 @@
 #' df %>% filter_duplicates(grp1)
 #' df %>% filter_duplicates(grp2)
 #'
-#' df %>% filter_unique(grp1)
+#' df %>% filter_unique(grp1, grp2)
 
 filter_duplicates <- function(data, ...) {
   group_var <- dplyr::quos(...)
 
   data %>%
     dplyr::group_by(!!! group_var) %>%
-    dplyr::filter(max(dplyr::row_number()) > 1) %>%
+    dplyr::filter(max(row_number()) > 1) %>%
     dplyr::ungroup()
 }
 
 #' @rdname filter_duplicates
+#' @export
 filter_unique <- function(data, ...) {
   group_var <- dplyr::quos(...)
 
