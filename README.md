@@ -3,7 +3,12 @@
 My personal package
 ===================
 
-Assorted functions written by me, [Wei Yang Tham](https://weiyangtham.github.io/). Feel free to use (but at your own risk!). Let me know if you find problems or find something helpful.
+Assorted functions written by me, [Wei Yang Tham](https://wytham.rbind.io/). Feel free to use (but at your own risk!). Let me know if you find problems or find something helpful.
+
+Currently available:
+
+-   `gather_multivalue`, `spread_multivalue`
+-   `filter_duplicates`, `filter_unique`
 
 Installation
 ------------
